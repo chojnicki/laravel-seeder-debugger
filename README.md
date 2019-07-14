@@ -11,6 +11,9 @@ Thanks to this info you can try to write more efficient seeders :)
 
 Do you need more info in debug? Feedback and pull requests are welcome. 
 
+NOTE: This library is part of my [laravel-seeder-extended](https://github.com/chojnicki/laravel-seeder-extended) 
+that beside of just debugging is adding extra methods. You can use this library alone or laravel-seeder-extender depends of your needs.
+
 ## Requirements
 
 - Laravel / Lumen 5.5 or higher (written on 5.8, not tested on lower than 5.5 but should work on 5.*)
