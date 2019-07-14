@@ -42,9 +42,9 @@ abstract class Seeder extends \Illuminate\Database\Seeder
 
         /* Debug RAM usage */
         $RAMUsage = memory_get_usage();
-        $RAMUsage = round($RAMUsage / 1024 / 1024); // to MB
+        $RAMUsage = round($RAMUsage / 1024 / 1024, 2); // to MB
         $RAMUsagePeak = memory_get_peak_usage();
-        $RAMUsagePeak = round($RAMUsagePeak / 1024 / 1024); // to MB
+        $RAMUsagePeak = round($RAMUsagePeak / 1024 / 1024, 2); // to MB
 
         $this->command->info('Current RAM usage is ' . $RAMUsage . 'MB with peak during execution ' . $RAMUsagePeak . 'MB.');
     }
