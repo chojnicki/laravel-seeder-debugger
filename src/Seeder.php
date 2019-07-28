@@ -2,6 +2,7 @@
 
 namespace Chojnicki\LaravelSeederDebugger;
 
+use Chojnicki\LaravelSeederDebugger\Events\SeedingFinished;
 use DB;
 
 abstract class Seeder extends \Illuminate\Database\Seeder
@@ -46,7 +47,16 @@ abstract class Seeder extends \Illuminate\Database\Seeder
         $RAMUsagePeak = memory_get_peak_usage();
         $RAMUsagePeak = round($RAMUsagePeak / 1024 / 1024, 2); // to MB
 
+        /* Print debug in console */
         $this->command->info('Current RAM usage is ' . $RAMUsage . 'MB with peak during execution ' . $RAMUsagePeak . 'MB.');
+
+        /* Fire event with debug */
+        event(new SeedingFinished([
+            'execution_time' => $executionTime,
+            'queries_count' => $this->queriesCount,
+            'ram_usage' => $RAMUsage,
+            'ram_usage_peak' => $RAMUsage,
+        ]));
     }
 
 }

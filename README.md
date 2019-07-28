@@ -38,5 +38,16 @@ with:
 use Chojnicki\LaravelSeederDebugger\Seeder;
 ```
 
+## Events
+
+If you want to debug seeding outside console (for ex. use Log) then there is event SeedingFinished that you can listen to.
+
+EventServiceProvider.php:
+```
+use Chojnicki\LaravelSeederDebugger\Events\SeedingFinished;
+```
+
+In you listener, $event->debug will return array with all info used in console, be keys: execution_time, queries_count, ram_usage, ram_usage_peak.
+
 ## Note
 This debugger simply extends original Seeder library (is not a fork) so all functionality is preserved and there should not be conflicts with already written seeders.
