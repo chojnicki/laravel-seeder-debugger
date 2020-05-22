@@ -32,6 +32,8 @@ abstract class Seeder extends \Illuminate\Database\Seeder
      */
     public function __destruct()
     {
+        if (get_class($this) != 'DatabaseSeeder') return; // print debug only on main seeder
+        
         if (! $this->debug) return;
 
         /* Debug execution time */
