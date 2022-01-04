@@ -32,7 +32,8 @@ abstract class Seeder extends \Illuminate\Database\Seeder
      */
     public function __destruct()
     {
-        if (get_class($this) != 'DatabaseSeeder') return; // print debug only on main seeder
+        $seederName = (new \ReflectionClass($this))->getShortName();
+        if ($seederName  != 'DatabaseSeeder') return; // print debug only on main seeder
         
         if (! $this->debug) return;
 
